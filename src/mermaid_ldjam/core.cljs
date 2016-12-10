@@ -16,18 +16,17 @@
 (defmacro dbg[x] `(let [x# ~x] (println "dbg:" '~x "=" x#) x#))
 
 (defn point-in-rect? [entity mx my]
-  ;(and
-  ;(> mx (:x entity))
-   ;(< mx (+ (:x entity) (:width entity)))
-   ;(> my (:y entity))
-   ;(< my (+ (:y entity) (:height entity)))
-                                        ;)
-  (println "Hello")
-  true)
+  (and
+   (> mx (:x entity))
+   (< mx (+ (:x entity) (:width entity)))
+   (> my (:y entity))
+   (< my (+ (:y entity) (:height entity)))))
 
 (defn clicked-on-entity? [mx my state]
   (let [new-state (for [[k v] (:entities state) :when (point-in-rect? v mx my)] (assoc state :last-clicked k))]
-    new-state))
+    (if-not (empty? new-state)
+      (first new-state)
+      state)))
 
 (defn update-last-clicked [state]
   (if true
@@ -36,8 +35,7 @@
 
 (defn update-state [state]
   (-> state
-      (update-last-clicked))
-  state)
+      (update-last-clicked)))
 
 (def load-image  (memoize q/load-image))
 
