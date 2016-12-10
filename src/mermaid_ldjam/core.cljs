@@ -23,10 +23,11 @@
     (assoc-in state [:entities hidden-entity] new-entity)))
 
 (def actions-map
-  {[:look :window] {:text "You look outside the window and see your home, the mighty ocean." :action ""}
-   [:look :bucket] {:text "You see a bucket. Maybe there is something inside." :action ""}
+  {[:look :window] {:text "You look outside the window and see your home, the mighty ocean." :action []}
+   [:look :bucket] {:text "You see a bucket. Maybe there is something inside." :action []}
    [:flap :window] {:text "You're too far away for that"}
-   [:flap :bucket] {:text "You flap against the bucket. BÄM. The bucket falls over and stones spill on the floor." :action [unhide :stone]}})
+   [:flap :bucket] {:text "You flap against the bucket. BÄM. The bucket falls over and stones spill on the floor." :action [unhide :stone]}
+   [:look :stone] {:text "There are stones on the floor. You can easily reach them" :action []}})
 
 (defn point-in-rect? [entity mx my]
   (and
@@ -65,7 +66,9 @@
     (if (and (= (count last-clicked) 2) todo)
       (let [new-state
             (assoc state :current-status (:text todo))]
-        ((first (:action todo)) new-state (last (:action todo))))
+        (if (> (count (:action todo)) 0)
+          ((first (:action todo)) new-state (last (:action todo)))
+          new-state))
       state)))
 
 (defn update-state [state]
