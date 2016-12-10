@@ -9,11 +9,12 @@
   (q/color-mode :hsb)
   {:entities
     {:bucket {:x 50 :y 150 :width 20 :height 50}
-     :window {:x 10 :y 10 :width 50 :height 50}}
+     :window {:x 10 :y 10 :width 50 :height 50}
+     :look {:x 10 :y (- (q/height) 20) :width 50 :height 20 :label "Look"}
+     :flap {:x 60 :y (- (q/height) 20) :width 50 :height 20 :label "Flap"}}
    :current-status " Hello world 🌅"
-   :last-clicked "Bla"})
-
-(defmacro dbg[x] `(let [x# ~x] (println "dbg:" '~x "=" x#) x#))
+   :last-clicked "Bla"
+   })
 
 (defn point-in-rect? [entity mx my]
   (and
@@ -23,7 +24,8 @@
    (< my (+ (:y entity) (:height entity)))))
 
 (defn clicked-on-entity? [mx my state]
-  (let [new-state (for [[k v] (:entities state) :when (point-in-rect? v mx my)] (assoc state :last-clicked k))]
+  (let [new-state
+         (for [[k v] (:entities state) :when (point-in-rect? v mx my)] (assoc state :last-clicked k))]
     (if-not (empty? new-state)
       (first new-state)
       state)))
@@ -43,7 +45,10 @@
   (q/image (load-image "resources/sea.jpg") 0 0 (q/width) (q/height)))
 
 (defn draw-entity [entity]
-  (q/rect (:x entity) (:y entity) (:width entity) (:height entity)))
+  (q/fill 255)
+  (q/rect (:x entity) (:y entity) (:width entity) (:height entity))
+  (q/fill 0)
+  (q/text (:label entity) (:x entity) (+ (:y entity) (:height entity))))
 
 (defn draw-entities [state]
   (doseq [[k v] (:entities state)] (draw-entity v)))
