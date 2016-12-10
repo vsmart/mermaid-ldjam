@@ -1,0 +1,569 @@
+[0mCompiling "js/main.js" from ["src"]...[0m
+[32mSuccessfully compiled "js/main.js" in 0.34 seconds.[0m
+notifying browser that file changed:  out/goog/deps.js
+notifying browser that file changed:  out/cljs_deps.js
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[32mSuccessfully compiled "js/main.js" in 0.32 seconds.[0m
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[36m----  Compiler Warning on   src/mermaid_ldjam/core.cljs   line:22  column:4  ----[0m
+
+  [1mUse of undeclared Var mermaid-ldjam.core/draw-background[0m
+
+  [36m18[0m  [36m   :angle (+ (:angle state) 0.1)})[0m
+  [36m19[0m  [36m[0m
+  [36m20[0m  [36m(defn draw-state [state][0m
+  [36m21[0m  [36m  (q/background 40)[0m
+  [33m22[0m  [1m  (draw-background))[0m
+  [0m  [0m  [33m   ^--- Use of undeclared Var mermaid-ldjam.core/draw-background[0m
+  [36m23[0m  [36m[0m
+  [36m24[0m  [36m(q/defsketch mermaid-ldjam[0m
+  [36m25[0m  [36m  :host "mermaid-ldjam"[0m
+  [36m26[0m  [36m  :size [500 500][0m
+  [36m27[0m  [36m  ; setup function called only once, during sketch initialization.[0m
+
+[36m----  Compiler Warning : Please see src/mermaid_ldjam/core.cljs  ----[0m
+[32mSuccessfully compiled "js/main.js" in 0.339 seconds.[0m
+notifying browser that file changed:  out/cljs_deps.js
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[32mSuccessfully compiled "js/main.js" in 0.268 seconds.[0m
+notifying browser that file changed:  out/cljs_deps.js
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[32mSuccessfully compiled "js/main.js" in 0.256 seconds.[0m
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[32mSuccessfully compiled "js/main.js" in 0.3 seconds.[0m
+notifying browser that file changed:  out/cljs_deps.js
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[32mSuccessfully compiled "js/main.js" in 0.268 seconds.[0m
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[32mSuccessfully compiled "js/main.js" in 0.275 seconds.[0m
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[32mSuccessfully compiled "js/main.js" in 0.301 seconds.[0m
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[32mSuccessfully compiled "js/main.js" in 0.291 seconds.[0m
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[32mSuccessfully compiled "js/main.js" in 0.292 seconds.[0m
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[31mFailed to compile "js/main.js" in 0.33 seconds.[0m
+[36m----  Could not Read  src/mermaid_ldjam/core.cljs   line:12  column:50  ----[0m
+
+  [1mMap literal must contain an even number of forms[0m
+
+  [36m10[0m  [36m  {:entities[0m
+  [36m11[0m  [36m    {:bucket {:x 50 :y 150 :width 20 :height 50}}[0m
+  [33m12[0m  [1m    {:window {:x 10 :y 10 :width 50 :height 50}}})[0m
+  [0m  [0m  [33m                                                 ^--- Map literal must contain an even number of forms[0m
+  [36m13[0m  [36m[0m
+  [36m14[0m  [36m(defn update-state [state][0m
+  [36m15[0m  [36m  ; Update sketch state by changing circle color and position.[0m
+
+[36m----  Reader Error : Please see src/mermaid_ldjam/core.cljs  ----[0m
+[0mCompiling "js/main.js" from ["src"]...[0m
+[31mFailed to compile "js/main.js" in 0.183 seconds.[0m
+[36m----  Could not Analyze  src/mermaid_ldjam/core.cljs   line:12  column:50  ----[0m
+
+  [1mMap literal must contain an even number of forms[0m
+
+  [36m10[0m  [36m  {:entities[0m
+  [36m11[0m  [36m    {:bucket {:x 50 :y 150 :width 20 :height 50}}[0m
+  [33m12[0m  [1m    {:window {:x 10 :y 10 :width 50 :height 50}}})[0m
+  [0m  [0m  [33m                                                 ^--- Map literal must contain an even number of forms[0m
+  [36m13[0m  [36m[0m
+  [36m14[0m  [36m(defn update-state [state][0m
+  [36m15[0m  [36m  ; Update sketch state by changing circle color and position.[0m
+
+[36m----  Analysis Error : Please see src/mermaid_ldjam/core.cljs  ----[0m
+[0mCompiling "js/main.js" from ["src"]...[0m
+[31mFailed to compile "js/main.js" in 0.21 seconds.[0m
+[36m----  Could not Analyze  src/mermaid_ldjam/core.cljs   line:12  column:50  ----[0m
+
+  [1mMap literal must contain an even number of forms[0m
+
+  [36m10[0m  [36m  {:entities[0m
+  [36m11[0m  [36m    {:bucket {:x 50 :y 150 :width 20 :height 50}}[0m
+  [33m12[0m  [1m    {:window {:x 10 :y 10 :width 50 :height 50}}})[0m
+  [0m  [0m  [33m                                                 ^--- Map literal must contain an even number of forms[0m
+  [36m13[0m  [36m[0m
+  [36m14[0m  [36m(defn update-state [state][0m
+  [36m15[0m  [36m  ; Update sketch state by changing circle color and position.[0m
+
+[36m----  Analysis Error : Please see src/mermaid_ldjam/core.cljs  ----[0m
+[0mCompiling "js/main.js" from ["src"]...[0m
+[32mSuccessfully compiled "js/main.js" in 0.256 seconds.[0m
+notifying browser that file changed:  out/cljs_deps.js
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[32mSuccessfully compiled "js/main.js" in 0.273 seconds.[0m
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[31mFailed to compile "js/main.js" in 0.246 seconds.[0m
+[36m----  Could not Read  src/mermaid_ldjam/core.cljs   line:14  column:1  ----[0m
+
+  [1mEOF while reading, starting at line 14 and column 1[0m
+
+  [36m12[0m  [36m     :window {:x 10 :y 10 :width 50 :height 50}}})[0m
+  [36m13[0m  [36m[0m
+  [33m14[0m  [1m(defn update-state [state][0m
+  [0m  [0m  [33m^--- EOF while reading, starting at line 14 and column 1[0m
+  [36m15[0m  [36m  ; Update sketch state by changing circle color and position.[0m
+  [36m16[0m  [36m[0m
+  [36m17[0m  [36m(def load-image  (memoize q/load-image))[0m
+
+[36m----  Reader Error : Please see src/mermaid_ldjam/core.cljs  ----[0m
+[0mCompiling "js/main.js" from ["src"]...[0m
+[32mSuccessfully compiled "js/main.js" in 0.278 seconds.[0m
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[36m----  Compiler Warning on   src/mermaid_ldjam/core.cljs   line:26  column:4  ----[0m
+
+  [1mUse of undeclared Var mermaid-ldjam.core/draw-entities[0m
+
+  [36m23[0m  [36m(defn draw-state [state][0m
+  [36m24[0m  [36m  (q/background 40)[0m
+  [36m25[0m  [36m  (draw-background)[0m
+  [33m26[0m  [1m  (draw-entities))[0m
+  [0m  [0m  [33m   ^--- Use of undeclared Var mermaid-ldjam.core/draw-entities[0m
+  [36m27[0m  [36m[0m
+  [36m28[0m  [36m(q/defsketch mermaid-ldjam[0m
+  [36m29[0m  [36m  :host "mermaid-ldjam"[0m
+  [36m30[0m  [36m  :size [600 400][0m
+  [36m31[0m  [36m  ; setup function called only once, during sketch initialization.[0m
+
+[36m----  Compiler Warning : Please see src/mermaid_ldjam/core.cljs  ----[0m
+[32mSuccessfully compiled "js/main.js" in 0.292 seconds.[0m
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[36m----  Compiler Warning on   src/mermaid_ldjam/core.cljs   line:26  column:4  ----[0m
+
+  [1mUse of undeclared Var mermaid-ldjam.core/draw-entities[0m
+
+  [36m23[0m  [36m(defn draw-state [state][0m
+  [36m24[0m  [36m  (q/background 40)[0m
+  [36m25[0m  [36m  (draw-background)[0m
+  [33m26[0m  [1m  (draw-entities state))[0m
+  [0m  [0m  [33m   ^--- Use of undeclared Var mermaid-ldjam.core/draw-entities[0m
+  [36m27[0m  [36m[0m
+  [36m28[0m  [36m(q/defsketch mermaid-ldjam[0m
+  [36m29[0m  [36m  :host "mermaid-ldjam"[0m
+  [36m30[0m  [36m  :size [600 400][0m
+  [36m31[0m  [36m  ; setup function called only once, during sketch initialization.[0m
+
+[36m----  Compiler Warning : Please see src/mermaid_ldjam/core.cljs  ----[0m
+[32mSuccessfully compiled "js/main.js" in 0.25 seconds.[0m
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[36m----  Compiler Warning on   src/mermaid_ldjam/core.cljs   line:24  column:4  ----[0m
+
+  [1mUse of undeclared Var mermaid-ldjam.core/rect[0m
+
+  [36m20[0m  [36m(defn draw-background [][0m
+  [36m21[0m  [36m  (q/image (load-image "resources/sea.jpg") 0 0 (q/width) (q/height)))[0m
+  [36m22[0m  [36m[0m
+  [36m23[0m  [36m(defn draw-entity [entity][0m
+  [33m24[0m  [1m  (rect (:x entity) (:y entity) (:width entity))(:x entity)[0m
+  [0m  [0m  [33m   ^--- Use of undeclared Var mermaid-ldjam.core/rect[0m
+  [36m25[0m  [36m  )[0m
+  [36m26[0m  [36m[0m
+  [36m27[0m  [36m(defn draw-entities [state][0m
+  [36m28[0m  [36m  (doseq (:entities state) ()))[0m
+
+[36m----  Compiler Warning : Please see src/mermaid_ldjam/core.cljs  ----[0m
+[31mFailed to compile "js/main.js" in 0.253 seconds.[0m
+[36m----  Could not Analyze  src/mermaid_ldjam/core.cljs   line:28  column:3  ----[0m
+
+  [1mdoseq requires a vector for its binding[0m
+
+  [36m27[0m  [36m(defn draw-entities [state][0m
+  [33m28[0m  [1m  (doseq (:entities state) ()))[0m
+  [0m  [0m  [33m  ^--- doseq requires a vector for its binding[0m
+  [36m29[0m  [36m[0m
+  [36m30[0m  [36m(defn draw-state [state][0m
+  [36m31[0m  [36m  (q/background 40)[0m
+
+[36m----  Analysis Error : Please see src/mermaid_ldjam/core.cljs  ----[0m
+[0mCompiling "js/main.js" from ["src"]...[0m
+[36m----  Compiler Warning on   src/mermaid_ldjam/core.cljs   line:24  column:4  ----[0m
+
+  [1mUse of undeclared Var mermaid-ldjam.core/rect[0m
+
+  [36m20[0m  [36m(defn draw-background [][0m
+  [36m21[0m  [36m  (q/image (load-image "resources/sea.jpg") 0 0 (q/width) (q/height)))[0m
+  [36m22[0m  [36m[0m
+  [36m23[0m  [36m(defn draw-entity [entity][0m
+  [33m24[0m  [1m  (rect (:x entity) (:y entity) (:width entity) (:height entity)))[0m
+  [0m  [0m  [33m   ^--- Use of undeclared Var mermaid-ldjam.core/rect[0m
+  [36m25[0m  [36m[0m
+  [36m26[0m  [36m(defn draw-entities [state][0m
+  [36m27[0m  [36m  (doseq (:entities state) ()))[0m
+  [36m28[0m  [36m[0m
+  [36m29[0m  [36m(defn draw-state [state][0m
+
+[36m----  Compiler Warning : Please see src/mermaid_ldjam/core.cljs  ----[0m
+[31mFailed to compile "js/main.js" in 0.22 seconds.[0m
+[36m----  Could not Analyze  src/mermaid_ldjam/core.cljs   line:27  column:3  ----[0m
+
+  [1mdoseq requires a vector for its binding[0m
+
+  [36m26[0m  [36m(defn draw-entities [state][0m
+  [33m27[0m  [1m  (doseq (:entities state) ()))[0m
+  [0m  [0m  [33m  ^--- doseq requires a vector for its binding[0m
+  [36m28[0m  [36m[0m
+  [36m29[0m  [36m(defn draw-state [state][0m
+  [36m30[0m  [36m  (q/background 40)[0m
+
+[36m----  Analysis Error : Please see src/mermaid_ldjam/core.cljs  ----[0m
+[0mCompiling "js/main.js" from ["src"]...[0m
+[36m----  Compiler Warning on   src/mermaid_ldjam/core.cljs   line:24  column:4  ----[0m
+
+  [1mUse of undeclared Var mermaid-ldjam.core/rect[0m
+
+  [36m20[0m  [36m(defn draw-background [][0m
+  [36m21[0m  [36m  (q/image (load-image "resources/sea.jpg") 0 0 (q/width) (q/height)))[0m
+  [36m22[0m  [36m[0m
+  [36m23[0m  [36m(defn draw-entity [entity][0m
+  [33m24[0m  [1m  (rect (:x entity) (:y entity) (:width entity) (:height entity)))[0m
+  [0m  [0m  [33m   ^--- Use of undeclared Var mermaid-ldjam.core/rect[0m
+  [36m25[0m  [36m[0m
+  [36m26[0m  [36m(defn draw-entities [state][0m
+  [36m27[0m  [36m  (doseq (:entities state) draw-entity))[0m
+  [36m28[0m  [36m[0m
+  [36m29[0m  [36m(defn draw-state [state][0m
+
+[36m----  Compiler Warning : Please see src/mermaid_ldjam/core.cljs  ----[0m
+[31mFailed to compile "js/main.js" in 0.462 seconds.[0m
+[36m----  Could not Analyze  src/mermaid_ldjam/core.cljs   line:27  column:3  ----[0m
+
+  [1mdoseq requires a vector for its binding[0m
+
+  [36m26[0m  [36m(defn draw-entities [state][0m
+  [33m27[0m  [1m  (doseq (:entities state) draw-entity))[0m
+  [0m  [0m  [33m  ^--- doseq requires a vector for its binding[0m
+  [36m28[0m  [36m[0m
+  [36m29[0m  [36m(defn draw-state [state][0m
+  [36m30[0m  [36m  (q/background 40)[0m
+
+[36m----  Analysis Error : Please see src/mermaid_ldjam/core.cljs  ----[0m
+[0mCompiling "js/main.js" from ["src"]...[0m
+[36m----  Compiler Warning on   src/mermaid_ldjam/core.cljs   line:24  column:4  ----[0m
+
+  [1mUse of undeclared Var mermaid-ldjam.core/rect[0m
+
+  [36m20[0m  [36m(defn draw-background [][0m
+  [36m21[0m  [36m  (q/image (load-image "resources/sea.jpg") 0 0 (q/width) (q/height)))[0m
+  [36m22[0m  [36m[0m
+  [36m23[0m  [36m(defn draw-entity [entity][0m
+  [33m24[0m  [1m  (rect (:x entity) (:y entity) (:width entity) (:height entity)))[0m
+  [0m  [0m  [33m   ^--- Use of undeclared Var mermaid-ldjam.core/rect[0m
+  [36m25[0m  [36m[0m
+  [36m26[0m  [36m(defn draw-entities [state][0m
+  [36m27[0m  [36m  (map (:entities state) draw-entity))[0m
+  [36m28[0m  [36m[0m
+  [36m29[0m  [36m(defn draw-state [state][0m
+
+[36m----  Compiler Warning : Please see src/mermaid_ldjam/core.cljs  ----[0m
+[32mSuccessfully compiled "js/main.js" in 0.363 seconds.[0m
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[36m----  Compiler Warning on   src/mermaid_ldjam/core.cljs   line:24  column:4  ----[0m
+
+  [1mUse of undeclared Var mermaid-ldjam.core/rect[0m
+
+  [36m20[0m  [36m(defn draw-background [][0m
+  [36m21[0m  [36m  (q/image (load-image "resources/sea.jpg") 0 0 (q/width) (q/height)))[0m
+  [36m22[0m  [36m[0m
+  [36m23[0m  [36m(defn draw-entity [entity][0m
+  [33m24[0m  [1m  (rect (:x entity) (:y entity) (:width entity) (:height entity)))[0m
+  [0m  [0m  [33m   ^--- Use of undeclared Var mermaid-ldjam.core/rect[0m
+  [36m25[0m  [36m[0m
+  [36m26[0m  [36m(defn draw-entities [state][0m
+  [36m27[0m  [36m  (map draw-entity (:entities state)))[0m
+  [36m28[0m  [36m[0m
+  [36m29[0m  [36m(defn draw-state [state][0m
+
+[36m----  Compiler Warning : Please see src/mermaid_ldjam/core.cljs  ----[0m
+[32mSuccessfully compiled "js/main.js" in 0.399 seconds.[0m
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[32mSuccessfully compiled "js/main.js" in 0.31 seconds.[0m
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[32mSuccessfully compiled "js/main.js" in 0.395 seconds.[0m
+notifying browser that file changed:  out/cljs_deps.js
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[32mSuccessfully compiled "js/main.js" in 0.333 seconds.[0m
+notifying browser that file changed:  out/cljs_deps.js
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[32mSuccessfully compiled "js/main.js" in 0.268 seconds.[0m
+notifying browser that file changed:  out/cljs_deps.js
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[31mFailed to compile "js/main.js" in 0.234 seconds.[0m
+[36m----  Could not Read  src/mermaid_ldjam/core.cljs   line:26  column:1  ----[0m
+
+  [1mEOF while reading, starting at line 26 and column 1[0m
+
+  [36m24[0m  [36m  (q/rect (:x entity) (:y entity) (:width entity) (:height entity)))[0m
+  [36m25[0m  [36m[0m
+  [33m26[0m  [1m(defn draw-entities [state][0m
+  [0m  [0m  [33m^--- EOF while reading, starting at line 26 and column 1[0m
+  [36m27[0m  [36m  (doseq [[k v] (:entities state)] (draw-entity v))[0m
+  [36m28[0m  [36m[0m
+  [36m29[0m  [36m(defn draw-state [state][0m
+
+[36m----  Reader Error : Please see src/mermaid_ldjam/core.cljs  ----[0m
+[0mCompiling "js/main.js" from ["src"]...[0m
+[32mSuccessfully compiled "js/main.js" in 0.254 seconds.[0m
+notifying browser that file changed:  out/cljs_deps.js
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[32mSuccessfully compiled "js/main.js" in 0.354 seconds.[0m
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[32mSuccessfully compiled "js/main.js" in 0.328 seconds.[0m
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[32mSuccessfully compiled "js/main.js" in 0.279 seconds.[0m
+notifying browser that file changed:  out/cljs_deps.js
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[32mSuccessfully compiled "js/main.js" in 0.314 seconds.[0m
+notifying browser that file changed:  out/cljs_deps.js
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[32mSuccessfully compiled "js/main.js" in 0.301 seconds.[0m
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[32mSuccessfully compiled "js/main.js" in 0.396 seconds.[0m
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[32mSuccessfully compiled "js/main.js" in 0.282 seconds.[0m
+notifying browser that file changed:  out/cljs_deps.js
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[32mSuccessfully compiled "js/main.js" in 0.322 seconds.[0m
+notifying browser that file changed:  out/cljs_deps.js
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[32mSuccessfully compiled "js/main.js" in 0.259 seconds.[0m
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[32mSuccessfully compiled "js/main.js" in 0.283 seconds.[0m
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[32mSuccessfully compiled "js/main.js" in 0.366 seconds.[0m
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[32mSuccessfully compiled "js/main.js" in 0.404 seconds.[0m
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[36m----  Compiler Warning on   src/mermaid_ldjam/core.cljs   line:35  column:4  ----[0m
+
+  [1mUse of undeclared Var mermaid-ldjam.core/draw-status-bar[0m
+
+  [36m32[0m  [36m  (draw-entities state)[0m
+  [36m33[0m  [36m  (draw-background)[0m
+  [36m34[0m  [36m  (draw-entities state)[0m
+  [33m35[0m  [1m  (draw-status-bar)[0m
+  [0m  [0m  [33m   ^--- Use of undeclared Var mermaid-ldjam.core/draw-status-bar[0m
+  [36m36[0m  [36m  )[0m
+  [36m37[0m  [36m[0m
+  [36m38[0m  [36m(q/defsketch mermaid-ldjam[0m
+  [36m39[0m  [36m  :host "mermaid-ldjam"[0m
+  [36m40[0m  [36m  :size [600 400][0m
+
+[36m----  Compiler Warning : Please see src/mermaid_ldjam/core.cljs  ----[0m
+[32mSuccessfully compiled "js/main.js" in 0.308 seconds.[0m
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[36m----  Compiler Warning on   src/mermaid_ldjam/core.cljs   line:33  column:4  ----[0m
+
+  [1mUse of undeclared Var mermaid-ldjam.core/draw-status-bar[0m
+
+  [36m29[0m  [36m(defn draw-state [state][0m
+  [36m30[0m  [36m  (draw-entities state)[0m
+  [36m31[0m  [36m  (draw-background)[0m
+  [36m32[0m  [36m  (draw-entities state)[0m
+  [33m33[0m  [1m  (draw-status-bar)[0m
+  [0m  [0m  [33m   ^--- Use of undeclared Var mermaid-ldjam.core/draw-status-bar[0m
+  [36m34[0m  [36m  )[0m
+  [36m35[0m  [36m[0m
+  [36m36[0m  [36m(q/defsketch mermaid-ldjam[0m
+  [36m37[0m  [36m  :host "mermaid-ldjam"[0m
+  [36m38[0m  [36m  :size [600 400][0m
+
+[36m----  Compiler Warning : Please see src/mermaid_ldjam/core.cljs  ----[0m
+[32mSuccessfully compiled "js/main.js" in 0.325 seconds.[0m
+notifying browser that file changed:  out/cljs_deps.js
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[36m----  Compiler Warning on   src/mermaid_ldjam/core.cljs   line:33  column:4  ----[0m
+
+  [1mUse of undeclared Var mermaid-ldjam.core/draw-status-bar[0m
+
+  [36m29[0m  [36m(defn draw-state [state][0m
+  [36m30[0m  [36m  (draw-entities state)[0m
+  [36m31[0m  [36m  (draw-background)[0m
+  [36m32[0m  [36m  (draw-entities state)[0m
+  [33m33[0m  [1m  (draw-status-bar))[0m
+  [0m  [0m  [33m   ^--- Use of undeclared Var mermaid-ldjam.core/draw-status-bar[0m
+  [36m34[0m  [36m[0m
+  [36m35[0m  [36m(q/defsketch mermaid-ldjam[0m
+  [36m36[0m  [36m  :host "mermaid-ldjam"[0m
+  [36m37[0m  [36m  :size [600 400][0m
+  [36m38[0m  [36m  ; setup function called only once, during sketch initialization.[0m
+
+[36m----  Compiler Warning : Please see src/mermaid_ldjam/core.cljs  ----[0m
+[32mSuccessfully compiled "js/main.js" in 0.324 seconds.[0m
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[31mFailed to compile "js/main.js" in 0.3 seconds.[0m
+[36m----  Could not Analyze  src/mermaid_ldjam/core.cljs   line:29  column:1  ----[0m
+
+  [1mParameter declaration "rect" should be a vector[0m
+
+  [36m27[0m  [36m  (doseq [[k v] (:entities state)] (draw-entity v)))[0m
+  [36m28[0m  [36m[0m
+  [33m29[0m  [1m(defn draw-status-bar[0m
+  [0m  [0m  [33m^--- Parameter declaration "rect" should be a vector[0m
+  [36m30[0m  [36m  (rect 0 0 (q/width) 30)[0m
+  [36m31[0m  [36m  )[0m
+
+[36m----  Analysis Error : Please see src/mermaid_ldjam/core.cljs  ----[0m
+[0mCompiling "js/main.js" from ["src"]...[0m
+[31mFailed to compile "js/main.js" in 0.26 seconds.[0m
+[36m----  Could not Analyze  src/mermaid_ldjam/core.cljs   line:29  column:1  ----[0m
+
+  [1mParameter declaration "q/rect" should be a vector[0m
+
+  [36m27[0m  [36m  (doseq [[k v] (:entities state)] (draw-entity v)))[0m
+  [36m28[0m  [36m[0m
+  [33m29[0m  [1m(defn draw-status-bar[0m
+  [0m  [0m  [33m^--- Parameter declaration "q/rect" should be a vector[0m
+  [36m30[0m  [36m  (q/rect 0 0 (q/width) 30)[0m
+  [36m31[0m  [36m  )[0m
+
+[36m----  Analysis Error : Please see src/mermaid_ldjam/core.cljs  ----[0m
+[0mCompiling "js/main.js" from ["src"]...[0m
+[32mSuccessfully compiled "js/main.js" in 0.33 seconds.[0m
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[32mSuccessfully compiled "js/main.js" in 0.285 seconds.[0m
+notifying browser that file changed:  out/cljs_deps.js
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[32mSuccessfully compiled "js/main.js" in 0.286 seconds.[0m
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[32mSuccessfully compiled "js/main.js" in 0.296 seconds.[0m
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[32mSuccessfully compiled "js/main.js" in 0.288 seconds.[0m
+notifying browser that file changed:  out/cljs_deps.js
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[32mSuccessfully compiled "js/main.js" in 0.316 seconds.[0m
+notifying browser that file changed:  out/cljs_deps.js
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[32mSuccessfully compiled "js/main.js" in 0.352 seconds.[0m
+notifying browser that file changed:  out/cljs_deps.js
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[32mSuccessfully compiled "js/main.js" in 0.442 seconds.[0m
+notifying browser that file changed:  out/cljs_deps.js
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[32mSuccessfully compiled "js/main.js" in 0.285 seconds.[0m
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[32mSuccessfully compiled "js/main.js" in 0.431 seconds.[0m
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[36m----  Compiler Warning on   src/mermaid_ldjam/core.cljs   line:42  column:3  ----[0m
+
+  [1mWrong number of args (0) passed to mermaid-ldjam.core/draw-status-bar[0m
+
+  [36m38[0m  [36m(defn draw-state [state][0m
+  [36m39[0m  [36m  (draw-entities state)[0m
+  [36m40[0m  [36m  (draw-background)[0m
+  [36m41[0m  [36m  (draw-entities state)[0m
+  [33m42[0m  [1m  (draw-status-bar))[0m
+  [0m  [0m  [33m  ^--- Wrong number of args (0) passed to mermaid-ldjam.core/draw-status-bar[0m
+  [36m43[0m  [36m[0m
+  [36m44[0m  [36m(q/defsketch mermaid-ldjam[0m
+  [36m45[0m  [36m  :host "mermaid-ldjam"[0m
+  [36m46[0m  [36m  :size [600 400][0m
+  [36m47[0m  [36m  ; setup function called only once, during sketch initialization.[0m
+
+[36m----  Compiler Warning : Please see src/mermaid_ldjam/core.cljs  ----[0m
+[32mSuccessfully compiled "js/main.js" in 0.412 seconds.[0m
+notifying browser that file changed:  out/cljs_deps.js
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[36m----  Compiler Warning on   src/mermaid_ldjam/core.cljs   line:41  column:3  ----[0m
+
+  [1mWrong number of args (0) passed to mermaid-ldjam.core/draw-status-bar[0m
+
+  [36m37[0m  [36m(defn draw-state [state][0m
+  [36m38[0m  [36m  (draw-entities state)[0m
+  [36m39[0m  [36m  (draw-background)[0m
+  [36m40[0m  [36m  (draw-entities state)[0m
+  [33m41[0m  [1m  (draw-status-bar))[0m
+  [0m  [0m  [33m  ^--- Wrong number of args (0) passed to mermaid-ldjam.core/draw-status-bar[0m
+  [36m42[0m  [36m[0m
+  [36m43[0m  [36m(q/defsketch mermaid-ldjam[0m
+  [36m44[0m  [36m  :host "mermaid-ldjam"[0m
+  [36m45[0m  [36m  :size [600 400][0m
+  [36m46[0m  [36m  ; setup function called only once, during sketch initialization.[0m
+
+[36m----  Compiler Warning : Please see src/mermaid_ldjam/core.cljs  ----[0m
+[32mSuccessfully compiled "js/main.js" in 0.324 seconds.[0m
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[36m----  Compiler Warning on   src/mermaid_ldjam/core.cljs   line:41  column:3  ----[0m
+
+  [1mWrong number of args (0) passed to mermaid-ldjam.core/draw-status-bar[0m
+
+  [36m37[0m  [36m(defn draw-state [state][0m
+  [36m38[0m  [36m  (draw-entities state)[0m
+  [36m39[0m  [36m  (draw-background)[0m
+  [36m40[0m  [36m  (draw-entities state)[0m
+  [33m41[0m  [1m  (draw-status-bar))[0m
+  [0m  [0m  [33m  ^--- Wrong number of args (0) passed to mermaid-ldjam.core/draw-status-bar[0m
+  [36m42[0m  [36m[0m
+  [36m43[0m  [36m(q/defsketch mermaid-ldjam[0m
+  [36m44[0m  [36m  :host "mermaid-ldjam"[0m
+  [36m45[0m  [36m  :size [600 400][0m
+  [36m46[0m  [36m  ; setup function called only once, during sketch initialization.[0m
+
+[36m----  Compiler Warning : Please see src/mermaid_ldjam/core.cljs  ----[0m
+[32mSuccessfully compiled "js/main.js" in 0.279 seconds.[0m
+notifying browser that file changed:  out/cljs_deps.js
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[32mSuccessfully compiled "js/main.js" in 0.308 seconds.[0m
+notifying browser that file changed:  out/cljs_deps.js
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[32mSuccessfully compiled "js/main.js" in 0.487 seconds.[0m
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[32mSuccessfully compiled "js/main.js" in 0.291 seconds.[0m
+notifying browser that file changed:  out/cljs_deps.js
+notifying browser that file changed:  out/mermaid_ldjam/core.js
+[0mCompiling "js/main.js" from ["src"]...[0m
+[32mSuccessfully compiled "js/main.js" in 0.295 seconds.[0m
+notifying browser that file changed:  out/cljs_deps.js
+notifying browser that file changed:  out/mermaid_ldjam/core.js

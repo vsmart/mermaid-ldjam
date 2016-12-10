@@ -7,34 +7,42 @@
   (q/frame-rate 30)
   ; Set color mode to HSB (HSV) instead of default RGB.
   (q/color-mode :hsb)
-  ; setup function returns initial state. It contains
-  ; circle color and position.
-  {:color 0
-   :angle 0})
+  {:entities
+    {:bucket {:x 50 :y 150 :width 20 :height 50}
+     :window {:x 10 :y 10 :width 50 :height 50}}
+   :current-status " Hello world 🌅" })
+
 
 (defn update-state [state]
-  ; Update sketch state by changing circle color and position.
-  {:color (mod (+ (:color state) 0.7) 255)
-   :angle (+ (:angle state) 0.1)})
+  state
+  )
+
+(def load-image  (memoize q/load-image))
+
+(defn draw-background []
+  (q/image (load-image "resources/sea.jpg") 0 0 (q/width) (q/height)))
+
+(defn draw-entity [entity]
+  (q/rect (:x entity) (:y entity) (:width entity) (:height entity)))
+
+(defn draw-entities [state]
+  (doseq [[k v] (:entities state)] (draw-entity v)))
+
+(defn draw-status-bar [state]
+  (q/fill 255)
+  (q/rect 0 0 (q/width) 30)
+  (q/fill 0)
+  (q/text (:current-status state) 10 20))
 
 (defn draw-state [state]
-  ; Clear the sketch by filling it with light-grey color.
-  (q/background 240)
-  ; Set circle color.
-  (q/fill (:color state) 255 255)
-  ; Calculate x and y coordinates of the circle.
-  (let [angle (:angle state)
-        x (* 150 (q/cos angle))
-        y (* 150 (q/sin angle))]
-    ; Move origin point to the center of the sketch.
-    (q/with-translation [(/ (q/width) 2)
-                         (/ (q/height) 2)]
-      ; Draw the circle.
-      (q/ellipse x y 100 100))))
+  (draw-entities state)
+  (draw-background)
+  (draw-entities state)
+  (draw-status-bar state))
 
 (q/defsketch mermaid-ldjam
   :host "mermaid-ldjam"
-  :size [500 500]
+  :size [600 400]
   ; setup function called only once, during sketch initialization.
   :setup setup
   ; update-state is called on each iteration before draw-state.
