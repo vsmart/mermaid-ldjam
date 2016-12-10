@@ -10,12 +10,34 @@
   {:entities
     {:bucket {:x 50 :y 150 :width 20 :height 50}
      :window {:x 10 :y 10 :width 50 :height 50}}
-   :current-status " Hello world 🌅" })
+   :current-status " Hello world 🌅"
+   :last-clicked "Bla"})
 
+(defmacro dbg[x] `(let [x# ~x] (println "dbg:" '~x "=" x#) x#))
+
+(defn point-in-rect? [entity mx my]
+  ;(and
+  ;(> mx (:x entity))
+   ;(< mx (+ (:x entity) (:width entity)))
+   ;(> my (:y entity))
+   ;(< my (+ (:y entity) (:height entity)))
+                                        ;)
+  (println "Hello")
+  true)
+
+(defn clicked-on-entity? [mx my state]
+  (let [new-state (for [[k v] (:entities state) :when (point-in-rect? v mx my)] (assoc state :last-clicked k))]
+    new-state))
+
+(defn update-last-clicked [state]
+  (if true
+    (clicked-on-entity? (q/mouse-x) (q/mouse-y) state)
+    state))
 
 (defn update-state [state]
-  state
-  )
+  (-> state
+      (update-last-clicked))
+  state)
 
 (def load-image  (memoize q/load-image))
 
@@ -32,7 +54,7 @@
   (q/fill 255)
   (q/rect 0 0 (q/width) 30)
   (q/fill 0)
-  (q/text (:current-status state) 10 20))
+  (q/text (str (:current-status state) (:last-clicked state)) 10 20))
 
 (defn draw-state [state]
   (draw-entities state)
