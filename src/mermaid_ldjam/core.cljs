@@ -59,8 +59,8 @@
   (let [last-clicked (:last-clicked state)]
     (if (and (= (count last-clicked) 2) (get actions-map last-clicked))
       (let [new-state
-            (assoc :current-status state (:text (get actions-map last-clicked)))] new-state)
-        ;((first (:action (get actions-map last-clicked))) new-state :stone))
+            (assoc state :current-status (:text (get actions-map last-clicked)))]
+        ((first (:action (get actions-map last-clicked))) new-state :stone))
       state)))
 
 (defn update-state [state]
