@@ -15,7 +15,11 @@
    :last-clicked []
    })
 
-(defn unhide [state hidden-entity] state)
+(defn unhide [state hidden-entity]
+  (let [entities (:entities state)
+        entity (hidden-entity entities)
+        new-entity (dissoc entity :hidden)]
+    (update-in state [:entities hidden-entity] new-entity)))
 
 
 (def actions-map
@@ -56,11 +60,12 @@
     state))
 
 (defn update-current-action [state]
-  (let [last-clicked (:last-clicked state)]
-    (if (and (= (count last-clicked) 2) (get actions-map last-clicked))
+  (let [last-clicked (:last-clicked state)
+        todo (get actions-map last-clicked)]
+    (if (and (= (count last-clicked) 2) todo)
       (let [new-state
-            (assoc state :current-status (:text (get actions-map last-clicked)))]
-        ((first (:action (get actions-map last-clicked))) new-state :stone))
+            (assoc state :current-status (:text todo))]
+        ((first (:action todo)) new-state (last (:action todo))))
       state)))
 
 (defn update-state [state]
