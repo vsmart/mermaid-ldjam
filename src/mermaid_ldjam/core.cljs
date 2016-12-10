@@ -8,17 +8,21 @@
   {:entities
     {:bucket {:x 50 :y 150 :width 20 :height 50}
      :window {:x 10 :y 10 :width 50 :height 50}
+     :stone {:x 200 :y 100 :width 20 :height 40 :hidden true}
      :look {:x 10 :y (- (q/height) 20) :width 50 :height 20 :label "Look"}
      :flap {:x 60 :y (- (q/height) 20) :width 50 :height 20 :label "Flap"}}
    :current-status "Hello little mermaid."
    :last-clicked []
    })
 
+(defn unhide [state hidden-entity] state)
+
+
 (def actions-map
   {[:look :window] {:text "You look outside the window and see your home, the mighty ocean." :action ""}
    [:look :bucket] {:text "You see a bucket. Maybe there is something inside." :action ""}
    [:flap :window] {:text "You're too far away for that"}
-   [:flap :bucket] {:text "You flap against the bucket. BÄM. The bucket falls over and stones spill on the floor." :action ""}})
+   [:flap :bucket] {:text "You flap against the bucket. BÄM. The bucket falls over and stones spill on the floor." :action [unhide :stone]}})
 
 (defn point-in-rect? [entity mx my]
   (and
@@ -54,7 +58,9 @@
 (defn update-current-action [state]
   (let [last-clicked (:last-clicked state)]
     (if (and (= (count last-clicked) 2) (get actions-map last-clicked))
-      (assoc state :current-status (:text (get actions-map last-clicked)))
+      (let [new-state
+            (assoc :current-status state (:text (get actions-map last-clicked)))] new-state)
+        ;((first (:action (get actions-map last-clicked))) new-state :stone))
       state)))
 
 (defn update-state [state]
@@ -68,13 +74,14 @@
   (q/image (load-image "resources/sea.jpg") 0 0 (q/width) (q/height)))
 
 (defn draw-entity [key entity last-clicked]
-  (cond
-    (= key (first last-clicked)) (q/fill 125 66 244)
-    (= key (last last-clicked)) (q/fill 244 194 66)
-    :else (q/fill 255))
-  (q/rect (:x entity) (:y entity) (:width entity) (:height entity))
-  (q/fill 0)
-  (q/text (:label entity) (:x entity) (+ (:y entity) (:height entity))))
+  (if-not (:hidden entity)
+    (do (cond
+          (= key (first last-clicked)) (q/fill 125 66 244)
+          (= key (last last-clicked)) (q/fill 244 194 66)
+          :else (q/fill 255))
+        (q/rect (:x entity) (:y entity) (:width entity) (:height entity))
+        (q/fill 0)
+        (q/text (:label entity) (:x entity) (+ (:y entity) (:height entity))))))
 
 (defn draw-entities [state]
   (doseq [[k v] (:entities state)] (draw-entity k v (:last-clicked state))))
