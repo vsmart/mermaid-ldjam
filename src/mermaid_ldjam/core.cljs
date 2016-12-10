@@ -52,6 +52,7 @@
   (q/fill 255)
   (q/rect 0 0 (q/width) 30)
   (q/fill 0)
+  (q/text (str "hi " (str (q/key-as-keyword)) "ho") 200 20)
   (q/text (str (:current-status state) (:last-clicked state)) 10 20))
 
 (defn draw-state [state]
