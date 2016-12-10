@@ -5,14 +5,12 @@
 (defn setup []
   ; Set frame rate to 30 frames per second.
   (q/frame-rate 30)
-  
-  
   {:entities
     {:bucket {:x 50 :y 150 :width 20 :height 50}
      :window {:x 10 :y 10 :width 50 :height 50}
      :look {:x 10 :y (- (q/height) 20) :width 50 :height 20 :label "Look"}
      :flap {:x 60 :y (- (q/height) 20) :width 50 :height 20 :label "Flap"}}
-   :current-status " Hello world 🌅"
+   :current-status "Hello little mermaid."
    :last-clicked []
    })
 
@@ -20,8 +18,7 @@
   {[:look :window] {:text "You look outside the window and see your home, the mighty ocean." :action ""}
    [:look :bucket] {:text "You see a bucket. Maybe there is something inside." :action ""}
    [:flap :window] {:text "You're too far away for that"}
-   [:flap :bucket] {:text "You flap against the bucket. BÄM. The bucket falls over and stones spill on the floor." :action ""}
-   })
+   [:flap :bucket] {:text "You flap against the bucket. BÄM. The bucket falls over and stones spill on the floor." :action ""}})
 
 (defn point-in-rect? [entity mx my]
   (and
@@ -30,11 +27,16 @@
    (> my (:y entity))
    (< my (+ (:y entity) (:height entity)))))
 
+(defn reset-actions [state entity-key]
+  (-> state
+    (assoc :last-clicked [entity-key])
+    (assoc :current-status "What now?")))
+
 (defn handle-click-actions [state entity-key]
   (cond
     (= (last (:last-clicked state)) entity-key) state
     (< (count (:last-clicked state)) 2) (update state :last-clicked conj entity-key)
-    :else (assoc state :last-clicked [entity-key])))
+    :else (reset-actions state entity-key)))
 
 (defn clicked-on-entity? [mx my state]
   (let [new-state
@@ -81,8 +83,10 @@
   (q/fill 255)
   (q/rect 0 0 (q/width) 30)
   (q/fill 0)
-  (q/text (str "hi " (str (q/key-as-keyword)) "ho") 200 20)
-  (q/text (str (:current-status state) (:last-clicked state)) 10 20))
+  (q/text-align :left)
+  (q/text (:current-status state) 10 20)
+  (q/text-align :right)
+  (q/text (:last-clicked state) (- (q/width) 10) 20))
 
 (defn draw-state [state]
   (draw-entities state)
