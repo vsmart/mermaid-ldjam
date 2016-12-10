@@ -23,13 +23,16 @@
    (> my (:y entity))
    (< my (+ (:y entity) (:height entity)))))
 
+(defn handle-click-actions [state entity-key]
+  (cond
+    (= (last (:last-clicked state)) entity-key) state
+    (< (count (:last-clicked state)) 2) (update state :last-clicked conj entity-key)
+    :else (assoc state :last-clicked [entity-key])))
+
 (defn clicked-on-entity? [mx my state]
   (let [new-state
         (for [[k v] (:entities state) :when (point-in-rect? v mx my)]
-          (cond
-            (= (last (:last-clicked state)) k) state
-            (< (count (:last-clicked state)) 2) (update state :last-clicked conj k)
-            :else (assoc state :last-clicked [k])))]
+          (handle-click-actions state k))]
     (if-not (empty? new-state)
       (first new-state)
       state)))
@@ -49,9 +52,10 @@
   (q/image (load-image "resources/sea.jpg") 0 0 (q/width) (q/height)))
 
 (defn draw-entity [key entity last-clicked]
-  (if (= key (first last-clicked))
-    (q/fill "hotpink")
-    (q/fill 255))
+  (cond
+    (= key (first last-clicked)) (q/fill 125 66 244)
+    (= key (last last-clicked)) (q/fill 244 194 66)
+    :else (q/fill 255))
   (q/rect (:x entity) (:y entity) (:width entity) (:height entity))
   (q/fill 0)
   (q/text (:label entity) (:x entity) (+ (:y entity) (:height entity))))
