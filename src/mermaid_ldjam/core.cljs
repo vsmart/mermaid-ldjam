@@ -19,8 +19,7 @@
   (let [entities (:entities state)
         entity (hidden-entity entities)
         new-entity (dissoc entity :hidden)]
-    (update-in state [:entities hidden-entity] new-entity)))
-
+    (assoc-in state [:entities hidden-entity] new-entity)))
 
 (def actions-map
   {[:look :window] {:text "You look outside the window and see your home, the mighty ocean." :action ""}
