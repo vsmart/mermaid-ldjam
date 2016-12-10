@@ -5,8 +5,8 @@
 (defn setup []
   ; Set frame rate to 30 frames per second.
   (q/frame-rate 30)
-  ; Set color mode to HSB (HSV) instead of default RGB.
-  (q/color-mode :hsb)
+  
+  
   {:entities
     {:bucket {:x 50 :y 150 :width 20 :height 50}
      :window {:x 10 :y 10 :width 50 :height 50}
@@ -14,6 +14,13 @@
      :flap {:x 60 :y (- (q/height) 20) :width 50 :height 20 :label "Flap"}}
    :current-status " Hello world 🌅"
    :last-clicked []
+   })
+
+(def actions-map
+  {[:look :window] {:text "You look outside the window and see your home, the mighty ocean." :action ""}
+   [:look :bucket] {:text "You see a bucket. Maybe there is something inside." :action ""}
+   [:flap :window] {:text "You're too far away for that"}
+   [:flap :bucket] {:text "You flap against the bucket. BÄM. The bucket falls over and stones spill on the floor." :action ""}
    })
 
 (defn point-in-rect? [entity mx my]
@@ -42,9 +49,16 @@
     (clicked-on-entity? (q/mouse-x) (q/mouse-y) state)
     state))
 
+(defn update-current-action [state]
+  (let [last-clicked (:last-clicked state)]
+    (if (and (= (count last-clicked) 2) (get actions-map last-clicked))
+      (assoc state :current-status (:text (get actions-map last-clicked)))
+      state)))
+
 (defn update-state [state]
   (-> state
-      (update-last-clicked)))
+      (update-last-clicked)
+      (update-current-action)))
 
 (def load-image  (memoize q/load-image))
 
