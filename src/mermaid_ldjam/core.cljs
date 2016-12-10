@@ -13,7 +13,7 @@
      :look {:x 10 :y (- (q/height) 20) :width 50 :height 20 :label "Look"}
      :flap {:x 60 :y (- (q/height) 20) :width 50 :height 20 :label "Flap"}}
    :current-status " Hello world 🌅"
-   :last-clicked "Bla"
+   :last-clicked []
    })
 
 (defn point-in-rect? [entity mx my]
@@ -25,7 +25,11 @@
 
 (defn clicked-on-entity? [mx my state]
   (let [new-state
-         (for [[k v] (:entities state) :when (point-in-rect? v mx my)] (assoc state :last-clicked k))]
+        (for [[k v] (:entities state) :when (point-in-rect? v mx my)]
+          (cond
+            (= (last (:last-clicked state)) k) state
+            (< (count (:last-clicked state)) 2) (update state :last-clicked conj k)
+            :else (assoc state :last-clicked [k])))]
     (if-not (empty? new-state)
       (first new-state)
       state)))
@@ -44,14 +48,16 @@
 (defn draw-background []
   (q/image (load-image "resources/sea.jpg") 0 0 (q/width) (q/height)))
 
-(defn draw-entity [entity]
-  (q/fill 255)
+(defn draw-entity [key entity last-clicked]
+  (if (= key (first last-clicked))
+    (q/fill "hotpink")
+    (q/fill 255))
   (q/rect (:x entity) (:y entity) (:width entity) (:height entity))
   (q/fill 0)
   (q/text (:label entity) (:x entity) (+ (:y entity) (:height entity))))
 
 (defn draw-entities [state]
-  (doseq [[k v] (:entities state)] (draw-entity v)))
+  (doseq [[k v] (:entities state)] (draw-entity k v (:last-clicked state))))
 
 (defn draw-status-bar [state]
   (q/fill 255)
