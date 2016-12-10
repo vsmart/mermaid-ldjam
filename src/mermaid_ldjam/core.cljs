@@ -13,6 +13,7 @@
      :flap {:x 60 :y (- (q/height) 20) :width 50 :height 20 :label "Flap"}}
    :current-status "Hello little mermaid."
    :last-clicked []
+   :mouse-clicked false
    })
 
 (defn unhide [state hidden-entity]
@@ -54,7 +55,7 @@
       state)))
 
 (defn update-last-clicked [state]
-  (if true
+  (if (:mouse-clicked state)
     (clicked-on-entity? (q/mouse-x) (q/mouse-y) state)
     state))
 
@@ -105,6 +106,12 @@
   (draw-entities state)
   (draw-status-bar state))
 
+(defn handle-click [state]
+  (assoc state :mouse-clicked true))
+
+(defn handle-release [state]
+  (assoc state :mouse-clicked false))
+
 (q/defsketch mermaid-ldjam
   :host "mermaid-ldjam"
   :size [600 400]
@@ -113,6 +120,9 @@
   ; update-state is called on each iteration before draw-state.
   :update update-state
   :draw draw-state
+  :mouse-pressed handle-click
+  :mouse-released handle-release
+
   ; This sketch uses functional-mode middleware.
   ; Check quil wiki for more info about middlewares and particularly
   ; fun-mode.
