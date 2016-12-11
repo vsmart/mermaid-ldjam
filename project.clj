@@ -11,7 +11,8 @@
   :hooks [leiningen.cljsbuild]
 
   :cljsbuild
-  {:builds [{:source-paths ["src"]
+  {:builds {"dev"
+            {:source-paths ["src"]
              :id "dev"
              :figwheel true
              :compiler
@@ -19,4 +20,15 @@
               :output-dir "out"
               :main "mermaid_ldjam.core"
               :optimizations :none
-              :pretty-print true}}]})
+              :pretty-print true}}
+            "min"
+            ;; Be aware that you need to change the path in the index.html as well!
+            {:source-paths ["src"]
+             :id "dev"
+             :figwheel true
+             :compiler
+             {:output-to "js/mermaid.js"
+              :output-dir "foo"
+              :main "mermaid_ldjam.core"
+              :optimizations :advanced
+              :pretty-print true}}}})
