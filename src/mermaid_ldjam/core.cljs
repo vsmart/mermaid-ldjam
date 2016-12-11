@@ -29,6 +29,12 @@
         new-entity (dissoc entity :hidden)]
     (assoc-in state [:entities hidden-entity] new-entity)))
 
+(defn hide [state hidden-entity]
+  (let [entities (:entities state)
+        entity (hidden-entity entities)
+        new-entity (conj entity {:hidden true})]
+    (assoc-in state [:entities hidden-entity] new-entity)))
+
 (defn win-game [state]
   (q/background 90 200 21)
   state)
@@ -39,7 +45,7 @@
 
 (def actions-map
   {[:look :window] {:text "You look outside the window and see your home, the mighty ocean." :action []}
-   [:look :bucket] {:text "You see a bucket. Maybe there is something inside." :action []}
+   [:look :bucket] {:text "You see a bucket. Maybe there is something inside."}
    [:look :stone] {:text "There are stones on the floor. You can easily reach them" :action []}
    [:look :bottle] {:text "There is a bottle of wine on the floor. You can't get drunk by yourself." :action []}
    [:look :seagull] {:text "It's a seagull looking for company!"}
@@ -57,10 +63,10 @@
    [:bottle :bucket] {:text "You put the bottle in the bucket. Then put it back. That makes no sense."}
    [:stone :starfish] {:text "You throw stones at the starfish. You will probably never be friends."}
    [:stone :bucket] {:text "You put a stone back in the bucket. Back to the beggining."}
-   [:stone :window] {:text "You throw a stone against the window. Crash! The window shatters in tiny pieces." :action [unhide :window-open]}
+   [:stone :window] {:text "You throw a stone against the window. Crash! The window shatters in tiny pieces." :action [unhide :window-open hide :window]}
    [:starfish :window] {:text "You throw the starfish against the window. It bounces back and gives you an angry look."}
-   [:starfish :window-open] {:text "You throw the starfish out the window." :action [unhide :seagull]}
-   [:bottle :seagull] {:text "You start drinking with the seagull. The seagull drunkenly points in the corner." :action [unhide :broom]}
+   [:starfish :window-open] {:text "You throw the starfish out the window. Looks like it attracted a seagull." :action [unhide :seagull hide :starfish]}
+   [:bottle :seagull] {:text "You start drinking with the seagull. The seagull drunkenly points in the corner and leaves." :action [unhide :broom hide :seagull]}
    [:bottle :starfish] {:text "You hand the bottle to the starfish. It takes a sip of wine, but it's more of a whiskey person."}
    [:broom :window-open] {:text "You catapult yourself out of the room with the broom. FREEDOM! You won." :action [win-game]}
    [:broom :bucket] {:text "You try to put the broom in the bucket. That's where the broom belongs, but you're not here to clean up."}
@@ -110,6 +116,8 @@
         (cond
           (= actions-count 1) ((first (:action todo)) new-state)
           (= actions-count 2) ((first (:action todo)) new-state (last (:action todo)))
+          (= actions-count 4) (let [newer-state ((first (:action todo)) new-state (nth (:action todo) 1))]
+                               ((nth (:action todo) 2) newer-state (last (:action todo))))
           :else new-state))
       state)))
 
