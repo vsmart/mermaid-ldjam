@@ -1,10 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
     <title>mermaid-ldjam</title>
     <script src="js/main.js"></script>
+    <style>
+      html, body {
+      font-family: Arial, sans-serif;
+      background: #d9d4ca;
+      color: #463C31;
+      }
+      .wrapper {
+      width: 600px;
+      display: block;
+      margin: auto;
+      }
+    </style>
   </head>
   <body>
-    <canvas id="mermaid-ldjam"></canvas>
+    <div class="wrapper">
+      <h1>The Mermaid Situation</h1>
+      <canvas id="mermaid-ldjam"></canvas>
+      <p>Click your way out of the room!</p>
+      <p>Use <code>space</code> to drop the current action.</p>
+      <p>Made with <3 and ClojureScript for Ludum Dare 37.</p>
+    </div>
   </body>
 </html>
