@@ -8,13 +8,13 @@
   {:entities
     {;objects
      :bucket {:x 380 :y 290 :width 50 :height 60 :path "resources/bucket.png"}
-     :window {:x 400 :y 60 :width 150 :height 100 :path "resources/window.png" :hidden true}
+     :window {:x 400 :y 60 :width 150 :height 100 :path "resources/window.png"}
      :window-open {:x 400 :y 60 :width 150 :height 100 :path "resources/window-open.png" :hidden true}
-     :stone {:x 440 :y 320 :width 50 :height 45 :path "resources/stone.png" }
-     :broom {:x 20 :y 160 :width 90 :height 160 :path "resources/broom.png" }
-     :starfish {:x 100 :y 220 :width 50 :height 50 :path "resources/starfish.png"}
+     :stone {:x 440 :y 320 :width 50 :height 45 :path "resources/stone.png" :hidden true}
+     :broom {:x 20 :y 160 :width 90 :height 160 :path "resources/broom.png" :hidden true}
+     :starfish {:x 120 :y 270 :width 50 :height 50 :path "resources/starfish.png"}
      :bottle {:x 260 :y 290 :width 30 :height 80 :path "resources/bottle.png"}
-     :seagull {:x 400 :y 60 :width 150 :height 100 :path "resources/seagull.png"}
+     :seagull {:x 400 :y 60 :width 150 :height 100 :path "resources/seagull.png" :hidden true}
      ;actions
      :look {:x 10 :y (- (q/height) 50) :width 100 :height 40 :label "Look" :path "resources/action.png"}
      :flap {:x 110 :y (- (q/height) 50) :width 100 :height 40 :label "Flap":path "resources/action.png"}}
@@ -122,6 +122,10 @@
 
 (defn draw-background []
   (q/background 194 185 177)
+  (q/no-stroke)
+  (q/fill 165 152 141)
+  (q/rect 0 260 (q/width) (q/height))
+  (q/image (load-image "resources/line.png") 0 250 (q/width) 20)
   (q/image (load-image "resources/mermaid.png") 170 120 255 200))
  ; (q/image (load-image "resources/sea.jpg") 0 0 (q/width) (q/height)))
 
