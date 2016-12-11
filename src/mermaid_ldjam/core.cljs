@@ -50,7 +50,7 @@
    [:starfish :window-open] {:text "You throw the starfish out the window." :action [unhide :seagull]}
    [:bottle :seagull] {:text "You start drinking with the seagull. The seagull drunkenly points in the corner." :action [unhide :broom]}
    [:bottle :starfish] {:text "You hand the bottle to the starfish. It takes a sip of wine, but it's more of a whiskey person."}
-   [:broom :window-open] {:text "You catapult yourself out of the room. FREEDOM! You won." :action [win-game]}
+   [:broom :window-open] {:text "You catapult yourself out of the room with the broom. FREEDOM! You won." :action [win-game]}
    [:broom :bucket] {:text "You try to put the broom in the bucket. That's where the broom belongs, but you're not here to clean up."}
    })
 
