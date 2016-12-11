@@ -1,6 +1,12 @@
-# test-js
+# The Mermaid Situation 
 
-A Quil sketch designed to ... well, that part is up to you.
+Click your way out of the room!
+
+Use space to drop the current action.
+
+Made with <3 and ClojureScript for Ludum Dare 37.
+
+![screenshot](resources/readme.png)
 
 ## Usage
 
