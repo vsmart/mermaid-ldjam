@@ -2,8 +2,7 @@
   (:require [quil.core :as q :include-macros true]
             [quil.middleware :as m]))
 
-(defn setup []
-  (q/frame-rate 12)
+(def initial-state
   {:entities
     {;objects
      :bucket {:x 380 :y 290 :width 50 :height 60 :path "resources/bucket.png"}
@@ -15,12 +14,17 @@
      :bottle {:x 260 :y 290 :width 30 :height 80 :path "resources/bottle.png"}
      :seagull {:x 400 :y 60 :width 150 :height 100 :path "resources/seagull.png" :hidden true}
      ;actions
-     :look {:x 10 :y (- (q/height) 50) :width 100 :height 40 :label "Look" :path "resources/action.png"}
-     :flap {:x 110 :y (- (q/height) 50) :width 100 :height 40 :label "Flap":path "resources/action.png"}}
+     :look {:x 10 :y (- 400 50) :width 100 :height 40 :label "Look" :path "resources/action.png"}
+     :flap {:x 110 :y (- 400 50) :width 100 :height 40 :label "Flap":path "resources/action.png"}}
    :current-status "Hello little mermaid."
    :last-clicked []
    :mouse-clicked false
+   :game-state :play
    })
+
+(defn setup []
+  (q/frame-rate 12)
+  initial-state)
 
 (defn unhide [state hidden-entity]
   (let [entities (:entities state)
@@ -34,13 +38,14 @@
         new-entity (conj entity {:hidden true})]
     (assoc-in state [:entities hidden-entity] new-entity)))
 
+(defn reset-game [state]
+  initial-state)
+
 (defn win-game [state]
-  (q/background 90 200 21)
-  state)
+  (assoc state :game-state :win))
 
 (defn lose-game [state]
-  (q/background 90 200 21)
-  state)
+  (assoc state :game-state :lose))
 
 (def actions-map
   {[:look :window] {:text "You look outside the window and see your home, the mighty ocean." :action []}
@@ -164,13 +169,17 @@
   (q/text-align :left)
   (q/text (:current-status state) 20 15 (- (q/width) 140) 90)
   (q/text-align :right)
-  (q/text (:last-clicked state) (- (q/width) 150) 15 120 90))
+  (q/text (:game-state state) (- (q/width) 150) 15 120 90))
 
 (defn draw-state [state]
-  (draw-entities state)
-  (draw-background)
-  (draw-entities state)
-  (draw-status-bar state))
+  (cond
+    (= (:game-state state) :win) (q/text "YOU WIN" 10 10)
+    (= (:game-state state) :lose) (q/text "YOU LOSE" 10 10)
+    :else (do    
+            (draw-entities state)
+            (draw-background)
+            (draw-entities state)
+            (draw-status-bar state))))
 
 (defn handle-click [state]
   (assoc state :mouse-clicked true))
