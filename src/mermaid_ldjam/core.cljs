@@ -7,14 +7,14 @@
   (q/frame-rate 30)
   {:entities
     {;objects
-     :bucket {:x 50 :y 150 :width 20 :height 50}
-     :window {:x 400 :y 50 :width 50 :height 50 :path "resources/window.png"}
-     :window-open {:x 460 :y 50 :width 50 :height 50 :path "resources/window-open.png" :hidden true}
-     :stone {:x 200 :y 100 :width 20 :height 40 :hidden true}
-     :broom {:x 300 :y 100 :width 20 :height 40 :hidden true :path "resources/broom.png"}
-     :starfish {:x 200 :y 200 :width 20 :height 40}
-     :bottle {:x 300 :y 300 :width 20 :height 40}
-     :seagull {:x 400 :y 200 :width 20 :height 40 :path "resources/seagull.png" :hidden true}
+     :bucket {:x 380 :y 290 :width 50 :height 60 :path "resources/bucket.png"}
+     :window {:x 400 :y 60 :width 150 :height 100 :path "resources/window.png" :hidden true}
+     :window-open {:x 400 :y 60 :width 150 :height 100 :path "resources/window-open.png" :hidden true}
+     :stone {:x 440 :y 320 :width 50 :height 45 :path "resources/stone.png" }
+     :broom {:x 20 :y 160 :width 90 :height 160 :path "resources/broom.png" }
+     :starfish {:x 100 :y 220 :width 50 :height 50 :path "resources/starfish.png"}
+     :bottle {:x 260 :y 290 :width 30 :height 80 :path "resources/bottle.png"}
+     :seagull {:x 400 :y 60 :width 150 :height 100 :path "resources/seagull.png"}
      ;actions
      :look {:x 10 :y (- (q/height) 50) :width 100 :height 40 :label "Look" :path "resources/action.png"}
      :flap {:x 110 :y (- (q/height) 50) :width 100 :height 40 :label "Flap":path "resources/action.png"}}
@@ -120,7 +120,9 @@
 
 (def load-image  (memoize q/load-image))
 
-(defn draw-background [])
+(defn draw-background []
+  (q/background 194 185 177)
+  (q/image (load-image "resources/mermaid.png") 170 120 255 200))
  ; (q/image (load-image "resources/sea.jpg") 0 0 (q/width) (q/height)))
 
 (defn draw-entity-image [entity]
@@ -135,16 +137,16 @@
         (if (:path entity)
           (draw-entity-image entity)
           (q/rect (:x entity) (:y entity) (:width entity) (:height entity)))
-        (q/fill 0)
+        (q/fill 54 44 33)
         (q/text-align :left)
-        (q/text (:label entity) (:x entity) (+ (:y entity) (:height entity))))))
+        (q/text (:label entity) (+ (:x entity) 40) (+ (:y entity) (- (:height entity) 15))))))
 
 (defn draw-entities [state]
   (doseq [[k v] (:entities state)] (draw-entity k v (:last-clicked state))))
 
 (defn draw-status-bar [state]
   (q/image (load-image "resources/status-bar.png") -10 -6 (+ (q/width) 25) 60)
-  (q/fill 0)
+  (q/fill 54 44 33)
   (q/text-align :left)
   (q/text (:current-status state) 20 15 (- (q/width) 120) 90)
   (q/text-align :right)
