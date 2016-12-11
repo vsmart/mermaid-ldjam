@@ -33,6 +33,10 @@
   (q/background 90 200 21)
   state)
 
+(defn lose-game [state]
+  (q/background 90 200 21)
+  state)
+
 (def actions-map
   {[:look :window] {:text "You look outside the window and see your home, the mighty ocean." :action []}
    [:look :bucket] {:text "You see a bucket. Maybe there is something inside." :action []}
@@ -41,17 +45,27 @@
    [:look :seagull] {:text "It's a seagull looking for company!"}
    [:look :broom] {:text "There is a broom. You wonder if it was there this whole time."}
    [:look :window-open] {:text "The window is open. You can see the sea. You can feel the breeze."}
+   [:look :starfish] {:text "There is a starfish. It looks kinda grumpy."}
    [:flap :window] {:text "You're too far away. You can't reach the window."}
    [:flap :bucket] {:text "You flap against the bucket. BÄM. The bucket falls over and stones spill on the floor." :action [unhide :stone]}
    [:flap :stone] {:text "You flap frustratedly against the stones. That's no use."}
+   [:flap :window-open] {:text "The window is open but it is still to far to reach."}
    [:flap :starfish] {:text "You flap against the starfish. 'Ouch!' - it cries."}
+   [:flap :bottle] {:text "You attempt flapping the bottle of wine but halt at the last moment. It's too previous to spill."}
+   [:flap :broom] {:text "You flap against the broom. It almost falls over. Maybe you can use it differently?"}
+   [:flap :seagull] {:text "You flap in the direction of the seagull. It seems intrigued."}
+   [:bottle :bucket] {:text "You put the bottle in the bucket. Then put it back. That makes no sense."}
+   [:stone :starfish] {:text "You throw stones at the starfish. You will probably never be friends."}
+   [:stone :bucket] {:text "You put a stone back in the bucket. Back to the beggining."}
    [:stone :window] {:text "You throw a stone against the window. Crash! The window shatters in tiny pieces." :action [unhide :window-open]}
-   [:starfish :window] {:text "You throw the starfish against the window. It bounces back and gives you a disappointed look."}
+   [:starfish :window] {:text "You throw the starfish against the window. It bounces back and gives you an angry look."}
    [:starfish :window-open] {:text "You throw the starfish out the window." :action [unhide :seagull]}
    [:bottle :seagull] {:text "You start drinking with the seagull. The seagull drunkenly points in the corner." :action [unhide :broom]}
    [:bottle :starfish] {:text "You hand the bottle to the starfish. It takes a sip of wine, but it's more of a whiskey person."}
    [:broom :window-open] {:text "You catapult yourself out of the room with the broom. FREEDOM! You won." :action [win-game]}
    [:broom :bucket] {:text "You try to put the broom in the bucket. That's where the broom belongs, but you're not here to clean up."}
+   [:bucket :seagull] {:text "You show the bucket to the seagull. It expected more of you."}
+   [:stone :seagull] {:text "You throw stones at the seagull. The seagull is disappointed and leaves. You guesss that's your life now." :action [lose-game]}
    })
 
 (defn point-in-rect? [entity mx my]
