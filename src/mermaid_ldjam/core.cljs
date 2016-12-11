@@ -158,16 +158,20 @@
 (defn handle-release [state]
   (assoc state :mouse-clicked false))
 
+(defn handle-key [state]
+  (if (= (str (q/key-as-keyword)) ": ")
+    (assoc state :last-clicked [])
+    state))
+
 (q/defsketch mermaid-ldjam
   :host "mermaid-ldjam"
   :size [600 400]
-  ; setup function called only once, during sketch initialization.
   :setup setup
-  ; update-state is called on each iteration before draw-state.
   :update update-state
   :draw draw-state
   :mouse-pressed handle-click
   :mouse-released handle-release
+  :key-pressed handle-key
 
   ; This sketch uses functional-mode middleware.
   ; Check quil wiki for more info about middlewares and particularly
