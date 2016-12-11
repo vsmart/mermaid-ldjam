@@ -6,9 +6,16 @@
   ; Set frame rate to 30 frames per second.
   (q/frame-rate 30)
   {:entities
-    {:bucket {:x 50 :y 150 :width 20 :height 50}
-     :window {:x 10 :y 10 :width 50 :height 50}
+    {;objects
+     :bucket {:x 50 :y 150 :width 20 :height 50}
+     :window {:x 400 :y 50 :width 50 :height 50}
+     :window-open {:x 460 :y 50 :width 50 :height 50 :hidden true}
      :stone {:x 200 :y 100 :width 20 :height 40 :hidden true}
+     :broom {:x 300 :y 100 :width 20 :height 40 :hidden true}
+     :starfish {:x 200 :y 200 :width 20 :height 40}
+     :bottle {:x 300 :y 300 :width 20 :height 40}
+     :seagull {:x 400 :y 200 :width 20 :height 40 :hidden true}
+     ;actions
      :look {:x 10 :y (- (q/height) 20) :width 50 :height 20 :label "Look"}
      :flap {:x 60 :y (- (q/height) 20) :width 50 :height 20 :label "Flap"}}
    :current-status "Hello little mermaid."
@@ -22,15 +29,34 @@
         new-entity (dissoc entity :hidden)]
     (assoc-in state [:entities hidden-entity] new-entity)))
 
+(defn win-game [state]
+  (q/background 90 200 21)
+  state)
+
 (def actions-map
   {[:look :window] {:text "You look outside the window and see your home, the mighty ocean." :action []}
    [:look :bucket] {:text "You see a bucket. Maybe there is something inside." :action []}
-   [:flap :window] {:text "You're too far away for that"}
+   [:look :stone] {:text "There are stones on the floor. You can easily reach them" :action []}
+   [:look :bottle] {:text "There is a bottle of wine on the floor. You can't get drunk by yourself." :action []}
+   [:look :seagull] {:text "It's a seagull looking for company!"}
+   [:look :broom] {:text "There is a broom. You wonder if it was there this whole time."}
+   [:look :window-open] {:text "The window is open. You can see the sea. You can feel the breeze."}
+   [:flap :window] {:text "You're too far away. You can't reach the window."}
    [:flap :bucket] {:text "You flap against the bucket. BÄM. The bucket falls over and stones spill on the floor." :action [unhide :stone]}
-   [:look :stone] {:text "There are stones on the floor. You can easily reach them" :action []}})
+   [:flap :stone] {:text "You flap frustratedly against the stones. That's no use."}
+   [:flap :starfish] {:text "You flap against the starfish. 'Ouch!' - it cries."}
+   [:stone :window] {:text "You throw a stone against the window. Crash! The window shatters in tiny pieces." :action [unhide :window-open]}
+   [:starfish :window] {:text "You throw the starfish against the window. It bounces back and gives you a disappointed look."}
+   [:starfish :window-open] {:text "You throw the starfish out the window." :action [unhide :seagull]}
+   [:bottle :seagull] {:text "You start drinking with the seagull. The seagull drunkenly points in the corner." :action [unhide :broom]}
+   [:bottle :starfish] {:text "You hand the bottle to the starfish. It takes a sip of wine, but it's more of a whiskey person."}
+   [:broom :window-open] {:text "You catapult yourself out of the room. FREEDOM! You won." :action [win-game]}
+   [:broom :bucket] {:text "You try to put the broom in the bucket. That's where the broom belongs, but you're not here to clean up."}
+   })
 
 (defn point-in-rect? [entity mx my]
   (and
+   (not (:hidden entity))
    (> mx (:x entity))
    (< mx (+ (:x entity) (:width entity)))
    (> my (:y entity))
@@ -62,13 +88,15 @@
 
 (defn update-current-action [state]
   (let [last-clicked (:last-clicked state)
-        todo (get actions-map last-clicked)]
+        todo (get actions-map last-clicked)
+        actions-count (count (:action todo))]
     (if (and (= (count last-clicked) 2) todo)
       (let [new-state
             (assoc state :current-status (:text todo))]
-        (if (> (count (:action todo)) 0)
-          ((first (:action todo)) new-state (last (:action todo)))
-          new-state))
+        (cond
+          (= actions-count 1) ((first (:action todo)) new-state)
+          (= actions-count 2) ((first (:action todo)) new-state (last (:action todo)))
+          :else new-state))
       state)))
 
 (defn update-state [state]
@@ -89,6 +117,7 @@
           :else (q/fill 255))
         (q/rect (:x entity) (:y entity) (:width entity) (:height entity))
         (q/fill 0)
+        (q/text-align :left)
         (q/text (:label entity) (:x entity) (+ (:y entity) (:height entity))))))
 
 (defn draw-entities [state]
