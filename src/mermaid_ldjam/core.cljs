@@ -51,7 +51,7 @@
    [:flap :stone] {:text "You flap frustratedly against the stones. That's no use."}
    [:flap :window-open] {:text "The window is open but it is still to far to reach."}
    [:flap :starfish] {:text "You flap against the starfish. 'Ouch!' - it cries."}
-   [:flap :bottle] {:text "You attempt flapping the bottle of wine but halt at the last moment. It's too previous to spill."}
+   [:flap :bottle] {:text "You attempt flapping the bottle of wine but halt at the last moment. It's too precious to spill."}
    [:flap :broom] {:text "You flap against the broom. It almost falls over. Maybe you can use it differently?"}
    [:flap :seagull] {:text "You flap in the direction of the seagull. It seems intrigued."}
    [:bottle :bucket] {:text "You put the bottle in the bucket. Then put it back. That makes no sense."}
