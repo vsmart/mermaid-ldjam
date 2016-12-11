@@ -6,7 +6,7 @@ Use space to drop the current action.
 
 Made with <3 and ClojureScript for Ludum Dare 37.
 
-![screenshot](resources/readme.png)
+<img src="resources/readme.png" width="400">
 
 ## Usage
 
