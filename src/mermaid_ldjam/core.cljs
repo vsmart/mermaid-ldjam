@@ -16,7 +16,7 @@
      ;actions
      :look {:x 10 :y (- 400 50) :width 100 :height 40 :label "Look" :path "resources/action.png"}
      :flap {:x 110 :y (- 400 50) :width 100 :height 40 :label "Flap":path "resources/action.png"}}
-   :current-status "Hello little mermaid."
+   :current-status "You are a mermaid trapped in a room, away from the sea."
    :last-clicked []
    :mouse-clicked false
    :game-state :play
@@ -48,7 +48,7 @@
   (assoc state :game-state :lose))
 
 (def actions-map
-  {[:look :window] {:text "You look outside the window and see your home, the mighty ocean." :action []}
+  {[:look :window] {:text "You look outside the window and see your home, the mighty sea." :action []}
    [:look :bucket] {:text "You see a bucket. Maybe there is something inside."}
    [:look :stone] {:text "There are stones on the floor. You can easily reach them" :action []}
    [:look :bottle] {:text "There is a bottle of wine on the floor. You can't get drunk by yourself." :action []}
@@ -72,10 +72,10 @@
    [:starfish :window-open] {:text "You throw the starfish out the window. Looks like it attracted a seagull." :action [unhide :seagull hide :starfish hide :window-open]}
    [:bottle :seagull] {:text "You start drinking with the seagull. The seagull drunkenly points in the corner and leaves." :action [unhide :broom hide :seagull unhide :window-open]}
    [:bottle :starfish] {:text "You hand the bottle to the starfish. It takes a sip of wine, but it's more of a whiskey person."}
-   [:broom :window-open] {:text "You catapult yourself out of the room with the broom. FREEDOM! You won." :action [win-game]}
+   [:broom :window-open] {:text "You catapult yourself out of the room with the broom. You made it back to the sea. Goodbye mermaid." :action [win-game]}
    [:broom :bucket] {:text "You try to put the broom in the bucket. That's where the broom belongs, but you're not here to clean up."}
    [:bucket :seagull] {:text "You show the bucket to the seagull. It expected more of you."}
-   [:stone :seagull] {:text "You throw stones at the seagull. The seagull is disappointed and leaves. You guess that's your life now." :action [lose-game]}
+   [:stone :seagull] {:text "You throw stones at the seagull. The seagull is disappointed and leaves. You stay behind in the room. I guess that's your life now." :action [lose-game]}
    })
 
 (defn point-in-rect? [entity mx my]
@@ -129,9 +129,12 @@
       state)))
 
 (defn update-state [state]
-  (-> state
+  (cond
+    (= (:game-state state) :win) state
+    (= (:game-state state) :lose) state
+    :else (-> state
       (update-last-clicked)
-      (update-current-action)))
+      (update-current-action))))
 
 (def load-image  (memoize q/load-image))
 
@@ -142,7 +145,6 @@
   (q/rect 0 260 (q/width) (q/height))
   (q/image (load-image "resources/line.png") 0 250 (q/width) 20)
   (q/image (load-image "resources/mermaid.png") 170 120 255 200))
- ; (q/image (load-image "resources/sea.jpg") 0 0 (q/width) (q/height)))
 
 (defn draw-entity-image [entity]
   (q/image (load-image (:path entity)) (:x entity) (:y entity) (:width entity) (:height entity)))
@@ -169,17 +171,29 @@
   (q/text-align :left)
   (q/text (:current-status state) 20 15 (- (q/width) 140) 90)
   (q/text-align :right)
-  (q/text (:game-state state) (- (q/width) 150) 15 120 90))
+  (q/text (:last-clicked state) (- (q/width) 150) 15 120 90))
+
+(defn draw-win-state [state]
+  (q/background 194 185 177)
+  (draw-status-bar state)
+  (q/image (load-image "resources/win.png") 25 50 550 350))
+
+(defn draw-lose-state [state]
+  (q/background 194 185 177)
+  (draw-status-bar state)
+  (q/image (load-image "resources/lose.png") 25 50 550 350))
+
+(defn draw-play-state [state]
+  (draw-entities state)
+  (draw-background)
+  (draw-entities state)
+  (draw-status-bar state))
 
 (defn draw-state [state]
   (cond
-    (= (:game-state state) :win) (q/text "YOU WIN" 10 10)
-    (= (:game-state state) :lose) (q/text "YOU LOSE" 10 10)
-    :else (do    
-            (draw-entities state)
-            (draw-background)
-            (draw-entities state)
-            (draw-status-bar state))))
+    (= (:game-state state) :win) (draw-win-state state)
+    (= (:game-state state) :lose) (draw-lose-state state)
+    :else (draw-play-state state)))
 
 (defn handle-click [state]
   (assoc state :mouse-clicked true))
