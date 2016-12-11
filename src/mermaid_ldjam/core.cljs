@@ -159,10 +159,10 @@
   (doseq [[k v] (:entities state)] (draw-entity k v (:last-clicked state))))
 
 (defn draw-status-bar [state]
-  (q/image (load-image "resources/status-bar.png") -10 -6 (+ (q/width) 25) 60)
+  (q/image (load-image "resources/status-bar.png") -10 -6 (+ (q/width) 25) 70)
   (q/fill 54 44 33)
   (q/text-align :left)
-  (q/text (:current-status state) 20 15 (- (q/width) 120) 90)
+  (q/text (:current-status state) 20 15 (- (q/width) 140) 90)
   (q/text-align :right)
   (q/text (:last-clicked state) (- (q/width) 150) 15 120 90))
 
