@@ -3,8 +3,7 @@
             [quil.middleware :as m]))
 
 (defn setup []
-  ; Set frame rate to 30 frames per second.
-  (q/frame-rate 30)
+  (q/frame-rate 12)
   {:entities
     {;objects
      :bucket {:x 380 :y 290 :width 50 :height 60 :path "resources/bucket.png"}
@@ -65,13 +64,13 @@
    [:stone :bucket] {:text "You put a stone back in the bucket. Back to the beggining."}
    [:stone :window] {:text "You throw a stone against the window. Crash! The window shatters in tiny pieces." :action [unhide :window-open hide :window]}
    [:starfish :window] {:text "You throw the starfish against the window. It bounces back and gives you an angry look."}
-   [:starfish :window-open] {:text "You throw the starfish out the window. Looks like it attracted a seagull." :action [unhide :seagull hide :starfish]}
-   [:bottle :seagull] {:text "You start drinking with the seagull. The seagull drunkenly points in the corner and leaves." :action [unhide :broom hide :seagull]}
+   [:starfish :window-open] {:text "You throw the starfish out the window. Looks like it attracted a seagull." :action [unhide :seagull hide :starfish hide :window-open]}
+   [:bottle :seagull] {:text "You start drinking with the seagull. The seagull drunkenly points in the corner and leaves." :action [unhide :broom hide :seagull unhide :window-open]}
    [:bottle :starfish] {:text "You hand the bottle to the starfish. It takes a sip of wine, but it's more of a whiskey person."}
    [:broom :window-open] {:text "You catapult yourself out of the room with the broom. FREEDOM! You won." :action [win-game]}
    [:broom :bucket] {:text "You try to put the broom in the bucket. That's where the broom belongs, but you're not here to clean up."}
    [:bucket :seagull] {:text "You show the bucket to the seagull. It expected more of you."}
-   [:stone :seagull] {:text "You throw stones at the seagull. The seagull is disappointed and leaves. You guesss that's your life now." :action [lose-game]}
+   [:stone :seagull] {:text "You throw stones at the seagull. The seagull is disappointed and leaves. You guess that's your life now." :action [lose-game]}
    })
 
 (defn point-in-rect? [entity mx my]
@@ -117,7 +116,10 @@
           (= actions-count 1) ((first (:action todo)) new-state)
           (= actions-count 2) ((first (:action todo)) new-state (last (:action todo)))
           (= actions-count 4) (let [newer-state ((first (:action todo)) new-state (nth (:action todo) 1))]
-                               ((nth (:action todo) 2) newer-state (last (:action todo))))
+                                ((nth (:action todo) 2) newer-state (last (:action todo))))
+          (= actions-count 6) (let [newer-state ((first (:action todo)) new-state (nth (:action todo) 1))
+                                    newest-state ((nth (:action todo) 2) newer-state (nth (:action todo) 3))]
+                                ((nth (:action todo) 4) newest-state (nth (:action todo) 5)))
           :else new-state))
       state)))
 
