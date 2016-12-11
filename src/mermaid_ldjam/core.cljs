@@ -139,12 +139,12 @@
 
 (defn draw-status-bar [state]
   (q/fill 255)
-  (q/rect 0 0 (q/width) 30)
+  (q/rect 0 0 (q/width) 50)
   (q/fill 0)
   (q/text-align :left)
-  (q/text (:current-status state) 10 20)
+  (q/text (:current-status state) 10 10 (- (q/width) 120) 90)
   (q/text-align :right)
-  (q/text (:last-clicked state) (- (q/width) 10) 20))
+  (q/text (:last-clicked state) (- (q/width) 10) 20) (q/width) 90)
 
 (defn draw-state [state]
   (draw-entities state)
