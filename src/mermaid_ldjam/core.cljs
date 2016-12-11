@@ -8,16 +8,16 @@
   {:entities
     {;objects
      :bucket {:x 50 :y 150 :width 20 :height 50}
-     :window {:x 400 :y 50 :width 50 :height 50}
-     :window-open {:x 460 :y 50 :width 50 :height 50 :hidden true}
+     :window {:x 400 :y 50 :width 50 :height 50 :path "resources/window.png"}
+     :window-open {:x 460 :y 50 :width 50 :height 50 :path "resources/window-open.png" :hidden true}
      :stone {:x 200 :y 100 :width 20 :height 40 :hidden true}
-     :broom {:x 300 :y 100 :width 20 :height 40 :hidden true}
+     :broom {:x 300 :y 100 :width 20 :height 40 :hidden true :path "resources/broom.png"}
      :starfish {:x 200 :y 200 :width 20 :height 40}
      :bottle {:x 300 :y 300 :width 20 :height 40}
-     :seagull {:x 400 :y 200 :width 20 :height 40 :hidden true}
+     :seagull {:x 400 :y 200 :width 20 :height 40 :path "resources/seagull.png" :hidden true}
      ;actions
-     :look {:x 10 :y (- (q/height) 20) :width 50 :height 20 :label "Look"}
-     :flap {:x 60 :y (- (q/height) 20) :width 50 :height 20 :label "Flap"}}
+     :look {:x 10 :y (- (q/height) 50) :width 100 :height 40 :label "Look" :path "resources/action.png"}
+     :flap {:x 110 :y (- (q/height) 50) :width 100 :height 40 :label "Flap":path "resources/action.png"}}
    :current-status "Hello little mermaid."
    :last-clicked []
    :mouse-clicked false
@@ -120,8 +120,11 @@
 
 (def load-image  (memoize q/load-image))
 
-(defn draw-background []
-  (q/image (load-image "resources/sea.jpg") 0 0 (q/width) (q/height)))
+(defn draw-background [])
+ ; (q/image (load-image "resources/sea.jpg") 0 0 (q/width) (q/height)))
+
+(defn draw-entity-image [entity]
+  (q/image (load-image (:path entity)) (:x entity) (:y entity) (:width entity) (:height entity)))
 
 (defn draw-entity [key entity last-clicked]
   (if-not (:hidden entity)
@@ -129,7 +132,9 @@
           (= key (first last-clicked)) (q/fill 125 66 244)
           (= key (last last-clicked)) (q/fill 244 194 66)
           :else (q/fill 255))
-        (q/rect (:x entity) (:y entity) (:width entity) (:height entity))
+        (if (:path entity)
+          (draw-entity-image entity)
+          (q/rect (:x entity) (:y entity) (:width entity) (:height entity)))
         (q/fill 0)
         (q/text-align :left)
         (q/text (:label entity) (:x entity) (+ (:y entity) (:height entity))))))
@@ -138,13 +143,12 @@
   (doseq [[k v] (:entities state)] (draw-entity k v (:last-clicked state))))
 
 (defn draw-status-bar [state]
-  (q/fill 255)
-  (q/rect 0 0 (q/width) 50)
+  (q/image (load-image "resources/status-bar.png") -10 -6 (+ (q/width) 25) 60)
   (q/fill 0)
   (q/text-align :left)
-  (q/text (:current-status state) 10 10 (- (q/width) 120) 90)
+  (q/text (:current-status state) 20 15 (- (q/width) 120) 90)
   (q/text-align :right)
-  (q/text (:last-clicked state) (- (q/width) 10) 20) (q/width) 90)
+  (q/text (:last-clicked state) (- (q/width) 150) 15 120 90))
 
 (defn draw-state [state]
   (draw-entities state)

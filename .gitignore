@@ -9,3 +9,6 @@ pom.xml.asc
 /.nrepl-port
 /out
 figwheel_server.log
+.DS_Store
+/resources/.DS_Store
+/src/.DS_Store
